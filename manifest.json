@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Bulk Downloader",
+  "version": "1.5",
+  "description": "Bulk download Canvas course files. Select modules or everything, then save PDFs, slides and docs into Course/Module folders.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "canvas-courses-bulk-downloader@extension",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  },
+  "permissions": ["downloads", "cookies"],
+  "host_permissions": ["https://*/courses/*"],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/courses/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ]
+}
